@@ -36,6 +36,7 @@ def get_response(chapter, font_size, lineheight, fontstyle):
                 d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
                 e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
                 f. Maintain consistent formatting across all poems within the collection.
+                g. Start a new poem on a new page
         
         2. Line Length 
            - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
@@ -103,6 +104,7 @@ def get_response(chapter, font_size, lineheight, fontstyle):
                 d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
                 e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
                 f. Maintain consistent formatting across all poems within the collection.
+                g. Start a new poem on a new page
         
         2. Line Length 
            - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
@@ -166,6 +168,7 @@ def get_response(chapter, font_size, lineheight, fontstyle):
                 d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
                 e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
                 f. Maintain consistent formatting across all poems within the collection.
+                g. Start a new poem on a new page
              
         2. Line Length
         Optimal Line Length: Aim for 50-75 characters per line (including spaces). Lines that are too long or too short can make reading difficult.
@@ -236,6 +239,7 @@ def get_response(chapter, font_size, lineheight, fontstyle):
                 d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
                 e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
                 f. Maintain consistent formatting across all poems within the collection.
+                g. Start a new poem on a new page
         
         2. Line Length 
            - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
@@ -299,6 +303,7 @@ def get_response(chapter, font_size, lineheight, fontstyle):
                 d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
                 e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
                 f. Maintain consistent formatting across all poems within the collection.
+                g. Start a new poem on a new page
              
         2. Line Length
         Optimal Line Length: Aim for 50-75 characters per line (including spaces). Lines that are too long or too short can make reading difficult.
@@ -344,6 +349,7 @@ def get_response(chapter, font_size, lineheight, fontstyle):
                 d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
                 e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
                 f. Maintain consistent formatting across all poems within the collection.
+                g. Start a new poem on a new page
              
         2. Line Length
         Optimal Line Length: Aim for 50-75 characters per line (including spaces). Lines that are too long or too short can make reading difficult.
