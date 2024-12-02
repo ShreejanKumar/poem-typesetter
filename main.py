@@ -25,53 +25,51 @@ def get_response(chapter, font_size, lineheight, fontstyle):
   max_chars = 37000
   if len(chapter) <= max_chars:
       prompt_template = """
-    You are an expert book formatter.  
-    This is a poem. Your job is to output a typeset file (USING HTML) which can be converted to a PDF book. Ensure the content is beautifully formatted, adhering to all rules of book formatting, and easily readable in a web browser. Include these features in HTML:
-    
-    1.  Poem
-       - For poems, follow these conventions:
-            a. Titles should be centered, bold, and in a slightly larger font size than the main text.
-            b. Stanzas should be separated by a line break, with each stanza left-aligned and indented consistently (e.g., 1 em).
-            c. Lines within a stanza should maintain consistent line spacing but no additional indentation.
-            d. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned            as appropriate.
-            e. Maintain consistent formatting across all poems within the collection.
-    
-    2. Line Length 
-       - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
-    
-    3. Line Spacing (Leading) 
-       -Comfortable Reading: Set line spacing (leading) to around 120-145% of the font size.
-    
-    4. Margins 
-       - Top and bottom margins for paragraphs should be 0.1em and 0.2em, respectively.  
-       - Left and right margins should be minimal to emulate a book-like layout.
-    
-    5. Consistency 
-       - Ensure uniform styles for similar elements (e.g., headings, captions, block quotes) throughout.
-    
-    6. Special Formatting  
-       - Format special segments (e.g., poetry, quotes, or exclamatory expressions) appropriately using italics.  
-    
-    7. Styling  
-       - Use various HTML tags (e.g., headings, bold, italics) as needed, but do not use colors for text.  
-    
-    8. Multilingual Words  
-       - Single words in other languages (e.g., Hindi or Spanish) should be italicized.  
-    
-    9. Chapter Heading  
-       - The chapter heading should be centrally aligned and start at the one-fourth level of a new page, with extra margin on the top.  
-       - Leave additional space between the chapter heading and the first paragraph.
-    
-    10. General Formatting  
-       - Avoid using inline styles wherever possible; rely on semantic tags.  
-       - Do not include anything else like ```html in the response. Start directly with the `<!DOCTYPE html>` line.
-    
-    11. Font size, style and line height
-       - Use fontsize as <<fontsize>>
-       - Use line height as <<lineheight>>
-       - Use Fonts style <<fontstyle>>
-       
-    Here is the target chapter: <<CHAPTER_TEXT>>
+        You are an expert book formatter.  
+        This is a poem. Your job is to output a typeset file (USING HTML) which can be converted to a PDF book. Ensure the content is beautifully formatted, adhering to all rules of book formatting, and easily readable in a web browser. Include these features in HTML:
+        
+        1.  Poem
+           - For poems, follow these conventions:
+                a. Titles should be centered, bold, and in a slightly larger font size than the main text.
+                b. Stanzas should be left-aligned with no indentation at the beginning of each stanza.
+                c. Leave some extra space in between stanzas to differentiate them.
+                d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
+                e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
+                f. Maintain consistent formatting across all poems within the collection.
+        
+        2. Line Length 
+           - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
+        
+        3. Line Spacing (Leading) 
+           -Comfortable Reading: Set line spacing (leading) to around 120-145% of the font size.
+        
+        4. Margins 
+           - Top and bottom margins for paragraphs should be 0.1em and 0.2em, respectively.  
+           - Left and right margins should be minimal to emulate a book-like layout.
+        
+        5. Consistency 
+           - Ensure uniform styles for similar elements (e.g., headings, captions, block quotes) throughout.
+        
+        6. Styling  
+           - Use various HTML tags (e.g., headings, bold, italics) as needed, but do not use colors for text.  
+        
+        7. Multilingual Words  
+           - Single words in other languages (e.g., Hindi or Spanish) should be italicized.  
+        
+        8. Chapter Heading  
+           - The chapter heading should be centrally aligned and start at the one-fourth level of a new page, with extra margin on the top.  
+           - Leave additional space between the chapter heading and the first paragraph.
+        
+        9. General Formatting  
+           - Avoid using inline styles wherever possible; rely on semantic tags.  
+           - Do not include anything else like ```html in the response. Start directly with the `<!DOCTYPE html>` line.
+        
+        10. Font size, style and line height
+           - Use fontsize as <<fontsize>>
+           - Use line height as <<lineheight>>
+           - Use Fonts style <<fontstyle>>
+           
+        Here is the target chapter: <<CHAPTER_TEXT>>
     """
       prompt = prompt_template.replace("<<CHAPTER_TEXT>>", chapter).replace("<<fontsize>>", font_size + "px").replace("<<lineheight>>", lineheight).replace("<<fontstyle>>", chapter)
       chat_completion = client.chat.completions.create(
@@ -95,52 +93,50 @@ def get_response(chapter, font_size, lineheight, fontstyle):
       # st.write(second_part)
       prompt_template_1 = """
     You are an expert book formatter.  
-    This is a poem. Your job is to output a typeset file (USING HTML) which can be converted to a PDF book. Ensure the content is beautifully formatted, adhering to all rules of book formatting, and easily readable in a web browser. Include these features in HTML:
-    
-    1.  Poem
-       - For poems, follow these conventions:
-            a. Titles should be centered, bold, and in a slightly larger font size than the main text.
-            b. Stanzas should be separated by a line break, with each stanza left-aligned and indented consistently (e.g., 1 em).
-            c. Lines within a stanza should maintain consistent line spacing but no additional indentation.
-            d. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned            as appropriate.
-            e. Maintain consistent formatting across all poems within the collection.
-    
-    2. Line Length 
-       - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
-    
-    3. Line Spacing (Leading) 
-       -Comfortable Reading: Set line spacing (leading) to around 120-145% of the font size.
-    
-    4. Margins 
-       - Top and bottom margins for paragraphs should be 0.1em and 0.2em, respectively.  
-       - Left and right margins should be minimal to emulate a book-like layout.
-    
-    5. Consistency 
-       - Ensure uniform styles for similar elements (e.g., headings, captions, block quotes) throughout.
-    
-    6. Special Formatting  
-       - Format special segments (e.g., poetry, quotes, or exclamatory expressions) appropriately using italics.  
-    
-    7. Styling  
-       - Use various HTML tags (e.g., headings, bold, italics) as needed, but do not use colors for text.  
-    
-    8. Multilingual Words  
-       - Single words in other languages (e.g., Hindi or Spanish) should be italicized.  
-    
-    9. Chapter Heading  
-       - The chapter heading should be centrally aligned and start at the one-fourth level of a new page, with extra margin on the top.  
-       - Leave additional space between the chapter heading and the first paragraph.
-    
-    10. General Formatting  
-       - Avoid using inline styles wherever possible; rely on semantic tags.  
-       - Do not include anything else like ```html in the response. Start directly with the `<!DOCTYPE html>` line.
-    
-    11. Font size, style and line height
-       - Use fontsize as <<fontsize>>
-       - Use line height as <<lineheight>>
-       - Use Fonts style <<fontstyle>>
-       
-    Here is the target chapter: <<CHAPTER_TEXT>>
+        This is a poem. Your job is to output a typeset file (USING HTML) which can be converted to a PDF book. Ensure the content is beautifully formatted, adhering to all rules of book formatting, and easily readable in a web browser. Include these features in HTML:
+        
+        1.  Poem
+           - For poems, follow these conventions:
+                a. Titles should be centered, bold, and in a slightly larger font size than the main text.
+                b. Stanzas should be left-aligned with no indentation at the beginning of each stanza.
+                c. Leave some extra space in between stanzas to differentiate them.
+                d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
+                e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
+                f. Maintain consistent formatting across all poems within the collection.
+        
+        2. Line Length 
+           - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
+        
+        3. Line Spacing (Leading) 
+           -Comfortable Reading: Set line spacing (leading) to around 120-145% of the font size.
+        
+        4. Margins 
+           - Top and bottom margins for paragraphs should be 0.1em and 0.2em, respectively.  
+           - Left and right margins should be minimal to emulate a book-like layout.
+        
+        5. Consistency 
+           - Ensure uniform styles for similar elements (e.g., headings, captions, block quotes) throughout.
+        
+        6. Styling  
+           - Use various HTML tags (e.g., headings, bold, italics) as needed, but do not use colors for text.  
+        
+        7. Multilingual Words  
+           - Single words in other languages (e.g., Hindi or Spanish) should be italicized.  
+        
+        8. Chapter Heading  
+           - The chapter heading should be centrally aligned and start at the one-fourth level of a new page, with extra margin on the top.  
+           - Leave additional space between the chapter heading and the first paragraph.
+        
+        9. General Formatting  
+           - Avoid using inline styles wherever possible; rely on semantic tags.  
+           - Do not include anything else like ```html in the response. Start directly with the `<!DOCTYPE html>` line.
+        
+        10. Font size, style and line height
+           - Use fontsize as <<fontsize>>
+           - Use line height as <<lineheight>>
+           - Use Fonts style <<fontstyle>>
+           
+        Here is the target chapter: <<CHAPTER_TEXT>>
     """
       prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<fontsize>>", font_size + "px").replace("<<lineheight>>", lineheight).replace("<<fontstyle>>", chapter)
       chat_completion = client.chat.completions.create(
@@ -162,25 +158,26 @@ def get_response(chapter, font_size, lineheight, fontstyle):
         Line height = <<lineheight>>
         Use Fonts style <<fontstyle>>
         Include these features in html:
-        1. For poems, follow these conventions:
-            a. Titles should be centered, bold, and in a slightly larger font size than the main text.
-            b. Stanzas should be separated by a line break, with each stanza left-aligned and indented consistently (e.g., 1 em).
-            c. Lines within a stanza should maintain consistent line spacing but no additional indentation.
-            d. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned            as appropriate.
-            e. Maintain consistent formatting across all poems within the collection.
+        1.  Poem
+           - For poems, follow these conventions:
+                a. Titles should be centered, bold, and in a slightly larger font size than the main text.
+                b. Stanzas should be left-aligned with no indentation at the beginning of each stanza.
+                c. Leave some extra space in between stanzas to differentiate them.
+                d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
+                e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
+                f. Maintain consistent formatting across all poems within the collection.
              
         2. Line Length
         Optimal Line Length: Aim for 50-75 characters per line (including spaces). Lines that are too long or too short can make reading difficult.
         3.Line Spacing (Leading)
         Comfortable Reading: The line spacing should be the same as given in the example.
         4. Proper margins and spaces. The top and Bottom margin for paragraph tag should be 0.1 and 0.2em.
-        8. Left and Right margins are minimum so the pdf looks like a book.
-        7.  Consistency
+        5. Left and Right margins are minimum so the pdf looks like a book.
+        6.  Consistency
         Uniformity: Maintain consistent styles for similar elements (e.g., headings, captions, and block quotes) throughout the book.
-        8. format special segments correctly and similarly such as a poetry, quotes or exclamatory expressions etc (use italics ) for them
-        9. Use various of html tags like heading bold etc wherever suitable but dont use colours for text
+        7. Use various of html tags like heading bold etc wherever suitable but dont use colours for text
         Keep this in mind : Left and Right margins are minimum.
-        10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
+        8. Do not write anything else like ```html in the response, directly start with the paragraph tags.
 
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
@@ -229,52 +226,50 @@ def get_response(chapter, font_size, lineheight, fontstyle):
       # st.write(third_part)
       prompt_template_1 = """
     You are an expert book formatter.  
-    This is a poem. Your job is to output a typeset file (USING HTML) which can be converted to a PDF book. Ensure the content is beautifully formatted, adhering to all rules of book formatting, and easily readable in a web browser. Include these features in HTML:
-    
-    1.  Poem
-       - For poems, follow these conventions:
-            a. Titles should be centered, bold, and in a slightly larger font size than the main text.
-            b. Stanzas should be separated by a line break, with each stanza left-aligned and indented consistently (e.g., 1 em).
-            c. Lines within a stanza should maintain consistent line spacing but no additional indentation.
-            d. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned            as appropriate.
-            e. Maintain consistent formatting across all poems within the collection.
-    
-    2. Line Length 
-       - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
-    
-    3. Line Spacing (Leading) 
-       -Comfortable Reading: Set line spacing (leading) to around 120-145% of the font size.
-    
-    4. Margins 
-       - Top and bottom margins for paragraphs should be 0.1em and 0.2em, respectively.  
-       - Left and right margins should be minimal to emulate a book-like layout.
-    
-    5. Consistency 
-       - Ensure uniform styles for similar elements (e.g., headings, captions, block quotes) throughout.
-    
-    6. Special Formatting  
-       - Format special segments (e.g., poetry, quotes, or exclamatory expressions) appropriately using italics.  
-    
-    7. Styling  
-       - Use various HTML tags (e.g., headings, bold, italics) as needed, but do not use colors for text.  
-    
-    8. Multilingual Words  
-       - Single words in other languages (e.g., Hindi or Spanish) should be italicized.  
-    
-    9. Chapter Heading  
-       - The chapter heading should be centrally aligned and start at the one-fourth level of a new page, with extra margin on the top.  
-       - Leave additional space between the chapter heading and the first paragraph.
-    
-    10. General Formatting  
-       - Avoid using inline styles wherever possible; rely on semantic tags.  
-       - Do not include anything else like ```html in the response. Start directly with the `<!DOCTYPE html>` line.
-    
-    11. Font size, style and line height
-       - Use fontsize as <<fontsize>>
-       - Use line height as <<lineheight>>
-       - Use Fonts style <<fontstyle>>
-       
-    Here is the target chapter: <<CHAPTER_TEXT>>
+        This is a poem. Your job is to output a typeset file (USING HTML) which can be converted to a PDF book. Ensure the content is beautifully formatted, adhering to all rules of book formatting, and easily readable in a web browser. Include these features in HTML:
+        
+        1.  Poem
+           - For poems, follow these conventions:
+                a. Titles should be centered, bold, and in a slightly larger font size than the main text.
+                b. Stanzas should be left-aligned with no indentation at the beginning of each stanza.
+                c. Leave some extra space in between stanzas to differentiate them.
+                d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
+                e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
+                f. Maintain consistent formatting across all poems within the collection.
+        
+        2. Line Length 
+           - Optimal Line Length: Aim for 50-75 characters per line (including spaces). Ensure a comfortable reading experience.
+        
+        3. Line Spacing (Leading) 
+           -Comfortable Reading: Set line spacing (leading) to around 120-145% of the font size.
+        
+        4. Margins 
+           - Top and bottom margins for paragraphs should be 0.1em and 0.2em, respectively.  
+           - Left and right margins should be minimal to emulate a book-like layout.
+        
+        5. Consistency 
+           - Ensure uniform styles for similar elements (e.g., headings, captions, block quotes) throughout.
+        
+        6. Styling  
+           - Use various HTML tags (e.g., headings, bold, italics) as needed, but do not use colors for text.  
+        
+        7. Multilingual Words  
+           - Single words in other languages (e.g., Hindi or Spanish) should be italicized.  
+        
+        8. Chapter Heading  
+           - The chapter heading should be centrally aligned and start at the one-fourth level of a new page, with extra margin on the top.  
+           - Leave additional space between the chapter heading and the first paragraph.
+        
+        9. General Formatting  
+           - Avoid using inline styles wherever possible; rely on semantic tags.  
+           - Do not include anything else like ```html in the response. Start directly with the `<!DOCTYPE html>` line.
+        
+        10. Font size, style and line height
+           - Use fontsize as <<fontsize>>
+           - Use line height as <<lineheight>>
+           - Use Fonts style <<fontstyle>>
+           
+        Here is the target chapter: <<CHAPTER_TEXT>>
     """
       prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<fontsize>>", font_size + "px").replace("<<lineheight>>", lineheight).replace("<<fontstyle>>", chapter)
       chat_completion = client.chat.completions.create(
@@ -296,25 +291,26 @@ def get_response(chapter, font_size, lineheight, fontstyle):
         Line height = <<lineheight>>
         Use Fonts style <<fontstyle>>
         Include these features in html:
-        1. For poems, follow these conventions:
-            a. Titles should be centered, bold, and in a slightly larger font size than the main text.
-            b. Stanzas should be separated by a line break, with each stanza left-aligned and indented consistently (e.g., 1 em).
-            c. Lines within a stanza should maintain consistent line spacing but no additional indentation.
-            d. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned            as appropriate.
-            e. Maintain consistent formatting across all poems within the collection.
+        1.  Poem
+           - For poems, follow these conventions:
+                a. Titles should be centered, bold, and in a slightly larger font size than the main text.
+                b. Stanzas should be left-aligned with no indentation at the beginning of each stanza.
+                c. Leave some extra space in between stanzas to differentiate them.
+                d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
+                e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
+                f. Maintain consistent formatting across all poems within the collection.
              
         2. Line Length
         Optimal Line Length: Aim for 50-75 characters per line (including spaces). Lines that are too long or too short can make reading difficult.
         3.Line Spacing (Leading)
         Comfortable Reading: The line spacing should be the same as given in the example.
         4. Proper margins and spaces. The top and Bottom margin for paragraph tag should be 0.1 and 0.2em.
-        8. Left and Right margins are minimum so the pdf looks like a book.
-        7.  Consistency
+        5. Left and Right margins are minimum so the pdf looks like a book.
+        6.  Consistency
         Uniformity: Maintain consistent styles for similar elements (e.g., headings, captions, and block quotes) throughout the book.
-        8. format special segments correctly and similarly such as a poetry, quotes or exclamatory expressions etc (use italics ) for them
-        9. Use various of html tags like heading bold etc wherever suitable but dont use colours for text
+        7. Use various of html tags like heading bold etc wherever suitable but dont use colours for text
         Keep this in mind : Left and Right margins are minimum.
-        10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
+        8. Do not write anything else like ```html in the response, directly start with the paragraph tags.
 
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
@@ -340,25 +336,27 @@ def get_response(chapter, font_size, lineheight, fontstyle):
         Line height = <<lineheight>>
         Use Fonts style <<fontstyle>>
         Include these features in html:
-        1. For poems, follow these conventions:
-            a. Titles should be centered, bold, and in a slightly larger font size than the main text.
-            b. Stanzas should be separated by a line break, with each stanza left-aligned and indented consistently (e.g., 1 em).
-            c. Lines within a stanza should maintain consistent line spacing but no additional indentation.
-            d. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned            as appropriate.
-            e. Maintain consistent formatting across all poems within the collection.
+        1.  Poem
+           - For poems, follow these conventions:
+                a. Titles should be centered, bold, and in a slightly larger font size than the main text.
+                b. Stanzas should be left-aligned with no indentation at the beginning of each stanza.
+                c. Leave some extra space in between stanzas to differentiate them.
+                d. Lines within a stanza should maintain consistent line spacing but no additional indentation.
+                e. Any notes or additional context, such as epigraphs or footnotes, should be in italics and placed before the main text, centered or left-aligned as appropriate.
+                f. Maintain consistent formatting across all poems within the collection.
              
         2. Line Length
         Optimal Line Length: Aim for 50-75 characters per line (including spaces). Lines that are too long or too short can make reading difficult.
         3.Line Spacing (Leading)
         Comfortable Reading: The line spacing should be the same as given in the example.
         4. Proper margins and spaces. The top and Bottom margin for paragraph tag should be 0.1 and 0.2em.
-        8. Left and Right margins are minimum so the pdf looks like a book.
-        7.  Consistency
+        5. Left and Right margins are minimum so the pdf looks like a book.
+        6.  Consistency
         Uniformity: Maintain consistent styles for similar elements (e.g., headings, captions, and block quotes) throughout the book.
-        8. format special segments correctly and similarly such as a poetry, quotes or exclamatory expressions etc (use italics ) for them
-        9. Use various of html tags like heading bold etc wherever suitable but dont use colours for text
+        7. Use various of html tags like heading bold etc wherever suitable but dont use colours for text
         Keep this in mind : Left and Right margins are minimum.
-        10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
+        
+        8. Do not write anything else like ```html in the response, directly start with the paragraph tags.
 
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
